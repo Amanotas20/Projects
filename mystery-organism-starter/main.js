@@ -66,18 +66,8 @@ const pAequorFactory = (number, dnaArray) => {
       }
       console.log(percCBase, percGBase)
       return false;
-    }   
-
-    }
+    }}
 }
-
-/*let newStrand1 = mockUpStrand()
-let newStrand2 = mockUpStrand()
-const testStrand1 = pAequorFactory(1, newStrand1)
-const testStrand2 = pAequorFactory(10, newStrand2)
-
-console.log(testStrand2.willLikelySurvive())*/
-
 function survivalSpecimens(){ //find at least 30 potential survival specimens
   let promisingSpecimens = [];
   let i = 0;
@@ -91,4 +81,3 @@ function survivalSpecimens(){ //find at least 30 potential survival specimens
   return promisingSpecimens;
 }
 
-console.log(survivalSpecimens())
