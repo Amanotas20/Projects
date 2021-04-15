@@ -1,0 +1,13 @@
+lodash/test/test/assert.js
+lodash/test/test/chunk.js
+lodash/test/test/clamp.js
+lodash/test/test/drop-while.js
+lodash/test/test/drop.js
+lodash/test/test/find-key.js
+lodash/test/test/has.js
+lodash/test/test/in-range.js
+lodash/test/test/invert.js
+lodash/test/test/lodash.js
+lodash/test/test/pad.js
+lodash/test/test/test-all.js
+lodash/test/test/words.js
