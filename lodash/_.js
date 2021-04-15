@@ -77,7 +77,6 @@ const _ = {
     },
 
     dropWhile(array, predicate){
-        let count = 0;
         for (element of array){
             let index = array.indexOf(element)
             if (!predicate(element, index, array)){
