@@ -76,15 +76,6 @@ const _ = {
         return array;
     },
 
-    dropWhile(array, predicate){
-        for (element of array){
-            let index = array.indexOf(element)
-            if (!predicate(element, index, array)){
-                array.splice(0,index);
-                return array
-            }
-        } 
-    },
 
     chunk(array, chunkSize){
         let chunkedArray = [];
