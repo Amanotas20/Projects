@@ -5,13 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="main.js"></script>
-    
+
     <title>Credit Card Checker</title>
     <center><h1>Credit Card Number Validator</h1></center>
 </head>
 <body>
     <center><h2>Introduce a credit card number.</h2></center>
-    <center><input type="text" name="name" id="cardCheck"></center>
-    <center><button id=validation>Validate Credit Card</button></center>
+    <center><input type="text" name="cardCheck" id="cardCheck" size=20></center>
+    <br>
+    <center><button id=validation onClick= "validateCred()" >Validate Credit Card</button></center>
+    <br>
+    <center><h3 id="outputMessage"></h3></center>
+
+
 </body>
 </html>
