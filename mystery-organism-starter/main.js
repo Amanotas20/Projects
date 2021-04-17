@@ -36,32 +36,32 @@ const pAequorFactory = (number, dnaArray) => {
     },
 
     compareDNA(pAequor){
-      let countEqualBases = 0;
-      this.dna.forEach((currentBase, i) => {
-        if (currentBase === pAequor.dna[i]){
-          countEqualBases++;
+      let countEqualBases = 0; //Declaring the equal bases counter
+      this.dna.forEach((currentBase, i) => { //Iterate through original dna array
+        if (currentBase === pAequor.dna[i]){ //Compare index by index the original and testing sample bases
+          countEqualBases++; //If the bases are equal add +1 to the counter
         }})
       console.log(countEqualBases, this.dna.length)
-      const percEqualBases = ((countEqualBases/this.dna.length)*100).toFixed(2);
+      const percEqualBases = ((countEqualBases/this.dna.length)*100).toFixed(2); //Calculate the % of matching bases
       return `specimen #${this.specimenNum} and specimen #${pAequor.specimenNum} have ${percEqualBases}% DNA in common`
     },
 
     willLikelySurvive(){ //function that determines which organism may survive
-      let baseCCount = 0;
-      let baseGCount = 0;
-      this.dna.forEach(base => {
+      let baseCCount = 0; //Declare base C counter
+      let baseGCount = 0; //Declare base G counter
+      this.dna.forEach(base => { //Iterate through each base in dna array in order to determine which are C and which are G
         switch(base){
           case 'C':
-            baseCCount++;
+            baseCCount++; //If C, then add +1 to base C counter
             break;
           case 'G':
-            baseGCount++;
+            baseGCount++; //If G, then add +1 to base G counter
             break;}
       })
-      let percCBase = ((baseCCount/this.dna.length)*100).toFixed(2);
-      let percGBase = ((baseGCount/this.dna.length)*100).toFixed(2);
+      let percCBase = ((baseCCount/this.dna.length)*100).toFixed(2); //Calculate % of base C 
+      let percGBase = ((baseGCount/this.dna.length)*100).toFixed(2); //Calculate % of base G
 
-      if (percGBase >= 60 || percCBase >= 60){
+      if (percGBase >= 60 || percCBase >= 60){ //If % of any of the bases is greater or equal to 60% return True, else False
         return true;
       }
       console.log(percCBase, percGBase)
@@ -69,10 +69,10 @@ const pAequorFactory = (number, dnaArray) => {
     }}
 }
 function survivalSpecimens(){ //find at least 30 potential survival specimens
-  let promisingSpecimens = [];
+  let promisingSpecimens = []; //Declare the array that stores potentially promising specimens
   let i = 0;
   while (promisingSpecimens.length < 30){
-    let testStrand = pAequorFactory(i, mockUpStrand())
+    let testStrand = pAequorFactory(i, mockUpStrand()) //Call the factory function with a random Strand
     
     if (testStrand.willLikelySurvive()){
       promisingSpecimens.push(testStrand.dna)
