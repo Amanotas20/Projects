@@ -12,31 +12,37 @@ function validateCred(){
     let checkArray = [array[array.length-1]];
     let sumOfArray = 0;
     let visited = 0;
-    
-    for (let i = array.length-2; i >= 0; i--){
-        if (visited === 0){
-            if (array[i]*2 > 9){
-                checkArray.push(array[i]*2 - 9);
-                visited++
-            }
-            else {
-                checkArray.push(array[i]*2)
-                visited++
-            }
-        }
-        else {
-            checkArray.push(array[i])
-            visited--
-        }  
-    }        
-    sumOfArray = checkArray.reduce((accumulator, currentValue) => accumulator + currentValue)
 
-    if (sumOfArray%10 === 0){        
-        document.getElementById("outputMessage").innerText = "VALID CREDIT CARD";
-        document.getElementById("outputMessage").style.color = "green"
+    if (array.length<16){
+        return window.alert("Please introduce a 16 digits number")
     }
     else{
-        document.getElementById("outputMessage").innerText = "INVALID CREDIT CARD";
-        document.getElementById("outputMessage").style.color = "red"
-    }   
+        for (let i = array.length-2; i >= 0; i--){
+            if (visited === 0){
+                if (array[i]*2 > 9){
+                    checkArray.push(array[i]*2 - 9);
+                    visited++
+                }
+                else {
+                    checkArray.push(array[i]*2)
+                    visited++
+                }
+            }
+            else {
+                checkArray.push(array[i])
+                visited--
+            }  
+        }        
+        sumOfArray = checkArray.reduce((accumulator, currentValue) => accumulator + currentValue)
+    
+        if (sumOfArray%10 === 0){        
+            document.getElementById("outputMessage").innerText = "VALID CREDIT CARD";
+            document.getElementById("outputMessage").style.color = "green"
+        }
+        else{
+            document.getElementById("outputMessage").innerText = "INVALID CREDIT CARD";
+            document.getElementById("outputMessage").style.color = "red"
+        }
+    }
+       
     }
