@@ -19,10 +19,10 @@ class Field{
         console.log(newArray);
         }
 
-    static generateField(width,height){
+    static generateField(height, width){
         let field = []
         let items = [hat, hole, fieldCharacter]
-        for (let i = 0; i < width; i++){
+        for (let i = 0; i < height; i++){
             let row = [];
             let j = 0;
             
@@ -36,8 +36,8 @@ class Field{
         field[0][0] = pathCharacter;
         const randomIndex = (num) => {return Math.floor(Math.random()*num)};
     
-        let row = randomIndex(width);
-        let col = randomIndex(height);
+        let row = randomIndex(height);
+        let col = randomIndex(width);
     
         while ((field[row][col] !== pathCharacter)){
             field[row][col] = hat;
@@ -45,8 +45,8 @@ class Field{
         }
         let oCount = 0;
         while (oCount < (Math.floor(width*height*0.2))){
-            let oRow = randomIndex(width);
-            let oCol = randomIndex(height);
+            let oRow = randomIndex(height);
+            let oCol = randomIndex(width);
             if (field[oRow][oCol]===pathCharacter | field[oRow][oCol]===hat){
                 continue;
             }
@@ -152,7 +152,7 @@ class Field{
     }
 }
 
-const NewGame = new Field(Field.generateField(5,5))
+const NewGame = new Field(Field.generateField(5,20))
 const currentGame = NewGame.field;
 
 NewGame.playGame(currentGame)
