@@ -5,6 +5,64 @@ const hole = 'O';
 const fieldCharacter = '░';
 const pathCharacter = '*';
 
+class Field{
+    constructor(array){
+        this.field = array;
+    }
+
+    print(fieldArray){
+        let newArray = [];
+        fieldArray.forEach(subArray => {    
+            newArray.push(subArray.join(''))
+        })
+        newArray = newArray.join("\n")
+        return newArray;
+        }
+
+    static generateField(width,height){
+        let field = []
+        let items = [hat, hole, fieldCharacter]
+        for (let i = 0; i < width; i++){
+            let row = [];
+            let j = 0;
+            
+            while (j < width){
+                row.push(fieldCharacter);
+                j++
+            }
+            field.push(row);
+        }
+    
+        field[0][0] = pathCharacter;
+        const randomIndex = (num) => {return Math.floor(Math.random()*num)};
+    
+        let row = randomIndex(width);
+        let col = randomIndex(height);
+    
+        while ((field[row][col] !== pathCharacter)){
+            field[row][col] = hat;
+            break;
+        }
+        let oCount = 0;
+        while (oCount < (Math.floor(width*height*0.2))){
+            let oRow = randomIndex(width);
+            let oCol = randomIndex(height);
+            if (field[oRow][oCol]===pathCharacter | field[oRow][oCol]===hat){
+                continue;
+            }
+            else{
+                field[oRow][oCol] = hole;
+                oCount++;
+            }
+            
+        }
+        return field;
+    }
+}
+
+const NewGame = new Field(Field.generateField(5,5))
+
+console.log(NewGame.print(NewGame.field))
 // const myField = new Field([
 //     ['*', '░', 'O'],
 //     ['░', 'O', '░'],
@@ -16,14 +74,14 @@ const pathCharacter = '*';
 //     ['░', 'O', '░'],
 //     ['░', '^', '░'],
 //   ]
-function print(fieldArray){
-            let newArray = [];
-            fieldArray.forEach(subArray => {    
-                newArray.push(subArray.join(''))
-            })
-            newArray = newArray.join("\n")
-            return newArray;
-            }
+// function print(fieldArray){
+//             let newArray = [];
+//             fieldArray.forEach(subArray => {    
+//                 newArray.push(subArray.join(''))
+//             })
+//             newArray = newArray.join("\n")
+//             return newArray;
+//             }
 
 
 
@@ -32,35 +90,7 @@ function print(fieldArray){
 
 // console.log(name)
 
-const width = 5;
-const height = 5;
-let field = []
-let items = [hat, hole, fieldCharacter]
-for (let i = 0; i < width; i++){
-    let row = [];
-    let j = 0;
-    
-    while (j < width){
-        let randomIndex = Math.floor(Math.random()*(width-1));
-        let randomElement = items[randomIndex];
-
-        if (j===0 & i===0){
-            row.push(pathCharacter);
-            j++;
-        }
-
-        if(row.includes(hat)){
-            items.splice(0,1);
-            // row.push(randomElement);
-            j++;
-        }
-        else{
-            row.push(randomElement);
-            j++;
-        }
-        
-    }
-    field.push(row);
-}
-
-console.log(print(field))
+// const width = 5;
+// const height = 5;
+// ;
+// console.log(field)
