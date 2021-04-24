@@ -16,7 +16,7 @@ class Field{
             newArray.push(subArray.join(''))
         })
         newArray = newArray.join("\n")
-        return newArray;
+        console.log(newArray);
         }
 
     static generateField(width,height){
@@ -58,38 +58,101 @@ class Field{
         }
         return field;
     }
+
+    playGame(gameField){
+        this.print(currentGame)
+        let row = 0;
+        let col = 0;
+        let found = 0;
+    
+        while (found < 1){
+            let move = prompt('Which Way? ');
+            switch(move){
+                case 'd':
+                    if (col + 1 === currentGame[0].length){
+                        console.log('Invalid Movement: You Lost');
+                        found++;
+                    }
+                    else if (currentGame[row][col + 1] === hat){
+                        console.log('You found your Hat: You Won!')
+                        found++
+                    }
+                    else if (currentGame[row][col + 1] === hole){
+                        console.log('You fell in a Hole: You Lost');
+                        found++
+                    }
+                    else{
+                        currentGame[row][col + 1] = pathCharacter;             
+                        col++}                
+                    this.print(currentGame);
+                    break;
+                    
+                case 's':
+                    if (row + 1 === currentGame.length){
+                        console.log('Invalid Movement: You Lost');
+                        found++;
+                    }
+                    else if (currentGame[row + 1][col] === hat){
+                        console.log('You found your Hat: You Won!')
+                        found++
+                    }
+                    else if (currentGame[row + 1][col] === hole){
+                        console.log('You fell in a Hole: You Lost');
+                        found++
+                    }
+                    else{
+                        currentGame[row + 1][col] = '*';
+                        row++
+                    }                
+                    this.print(currentGame);
+                    break;
+    
+                case 'a':
+                    if (col - 1 < 0){
+                        console.log('Invalid Movement: You Lost');
+                        found++;
+                    }
+                    else if (currentGame[row][col - 1] === hat){
+                        console.log('You found your Hat: You Won!')
+                        found++
+                    }
+                    else if (currentGame[row][col - 1] === hole){
+                        console.log('You fell in a Hole: You Lost');
+                        found++
+                    }
+                    else{
+                        currentGame[row][col - 1] = pathCharacter;             
+                        col--
+                    }                
+                    this.print(currentGame);
+                    break;
+    
+                case 'w':
+                    if (row - 1 < 0){
+                        console.log('Invalid Movement: You Lost');
+                        found++;
+                    }
+                    else if (currentGame[row - 1][col] === hat){
+                        console.log('You found your Hat: You Won!')
+                        found++
+                    }
+                    else if (currentGame[row - 1][col] === hole){
+                        console.log('You fell in a Hole: You Lost');
+                        found++
+                    }
+                    else{
+                        currentGame[row + 1][col] = '*';
+                        row++                
+                    }
+                    this.print(currentGame);
+                    break;
+            }
+            
+        }
+    }
 }
 
 const NewGame = new Field(Field.generateField(5,5))
-
-// const currentGame = NewGame.print(NewGame.field)
-
 const currentGame = NewGame.field;
 
-
-function print(fieldArray){
-
-            let newArray = [];
-            fieldArray.forEach(subArray => {    
-                newArray.push(subArray.join(''))
-            })
-            newArray = newArray.join("\n")
-            
-            let iterations = newArray.length - (fieldArray.length - 1);
-
-            for (let i = 0; i < iterations; i++){
-                let move = prompt('Which way?');
-                
-                switch(move){
-                    case 'd':
-                        newArray.splice((i+1), 0, pathCharacter);
-                        console.log(i+1)
-                        console.log(newArray);
-                        break;                
-                }
-                            
-            }
-        }
-    
-console.log(print(currentGame))
-
+NewGame.playGame(currentGame)
