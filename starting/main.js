@@ -62,35 +62,34 @@ class Field{
 
 const NewGame = new Field(Field.generateField(5,5))
 
-console.log(NewGame.print(NewGame.field))
-// const myField = new Field([
-//     ['*', '░', 'O'],
-//     ['░', 'O', '░'],
-//     ['░', '^', '░'],
-//   ]);
+// const currentGame = NewGame.print(NewGame.field)
 
-//   let array = [
-//     ['*', '░', 'O'],
-//     ['░', 'O', '░'],
-//     ['░', '^', '░'],
-//   ]
-// function print(fieldArray){
-//             let newArray = [];
-//             fieldArray.forEach(subArray => {    
-//                 newArray.push(subArray.join(''))
-//             })
-//             newArray = newArray.join("\n")
-//             return newArray;
-//             }
+const currentGame = NewGame.field;
 
 
+function print(fieldArray){
 
- 
-// const name = prompt('What is your name?');
+            let newArray = [];
+            fieldArray.forEach(subArray => {    
+                newArray.push(subArray.join(''))
+            })
+            newArray = newArray.join("\n")
+            
+            let iterations = newArray.length - (fieldArray.length - 1);
 
-// console.log(name)
+            for (let i = 0; i < iterations; i++){
+                let move = prompt('Which way?');
+                
+                switch(move){
+                    case 'd':
+                        newArray.splice((i+1), 0, pathCharacter);
+                        console.log(i+1)
+                        console.log(newArray);
+                        break;                
+                }
+                            
+            }
+        }
+    
+console.log(print(currentGame))
 
-// const width = 5;
-// const height = 5;
-// ;
-// console.log(field)
